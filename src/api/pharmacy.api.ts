@@ -1,6 +1,6 @@
 import { Pharmacy } from "../models/pharmacy.model";
 
-const URL_API = "";
+const URL_API = "https://ms-pharmacys-turn.herokuapp.com/ms-pharmacys-turn/v1/turn/by-geolocation?lat=-33.482883&lng=-70.760702&radiusKm=15";
 
 
 export const getOpenPharmacy = async (): Promise<Pharmacy> => {
