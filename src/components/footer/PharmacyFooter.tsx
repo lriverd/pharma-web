@@ -1,9 +1,9 @@
 
-
 export const PharmacyFooter = () => {
-    return(
-        <>
+    return (
+        <div>
             Pharmacy Web ©2022 Created by lriverd
-        </>
-    )
+        </div>
+        );
+    
 }

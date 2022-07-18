@@ -1,0 +1,24 @@
+@import '../styles/_colors';
+
+.ant-layout-content {
+    min-height: 120px;
+    color: $color-natural1;
+    line-height: 120px;
+    background: $color-natural2;
+  }
+
+  .ant-layout-header,
+  .ant-layout-footer {
+    color: $color-natural2;
+    background: $color-natural1;
+  }
+
+  .ant-layout-footer{
+      display: flex;
+      justify-content: center;
+  }
+
+  .ant-layout{
+      justify-content: space-between;
+      
+  }

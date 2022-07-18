@@ -1,9 +1,5 @@
 
 
 export const PharmacyHeader = () => {
-    return (
-        <>
-            
-        </>
-    )
+    return ''
 }
