@@ -11,7 +11,7 @@ interface PharmacyProps{
 export const PharmacyDetail = ({pharmacy}: PharmacyProps) => {
     const renderPharmacy:JSX.Element =  (
             <div className="pharmacy-detail">
-                <div className="pharmacy-name">Farmacia {pharmacy.name}</div>
+                <div className="pharmacy-name"> {pharmacy.name}</div>
                 <div className="pharmacy-address">{pharmacy.address.address}</div>
                 <div className="pharmacy-phone"> <FontAwesomeIcon icon={faPhone} /> {pharmacy.phone}</div>
                 <div className="pharmacy-distance"><FontAwesomeIcon icon={faPersonWalkingArrowRight} /> {pharmacy.distance_km_from_origin} Kms</div>

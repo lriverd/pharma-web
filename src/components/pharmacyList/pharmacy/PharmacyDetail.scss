@@ -6,4 +6,12 @@
     border-color: $color-classy2;
     border-radius: 12px;
     margin: 4px;
+    height: 120px;
+}
+
+.pharmacy-{
+    &name{
+        font-weight: bold;
+        display: inline;
+    }
 }
