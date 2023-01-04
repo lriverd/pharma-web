@@ -14,9 +14,9 @@ export const PharmacyList = ({pharmacyList}: PharmacyListProps) =>{
     }
 
     return (
-        <>
+        <div className="space-align-containers">
             {renderPharmacyList()}
-        </>
+        </div>
     )
         
 }
