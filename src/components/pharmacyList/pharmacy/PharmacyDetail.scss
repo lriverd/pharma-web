@@ -1,19 +1,19 @@
-@import '../../../styles/_colors';
+@import "../../../styles/_colors";
 
-.pharmacy-detail{
-    padding: 12px;
-    border: solid 2px;
-    border-color: $color-classy2;
-    border-radius: 12px;
-    margin: 4px;
+.pharmacy-detail {
+  padding: 12px;
+  // border: solid 2px;
+  // border-color: $color-classy2;
+  // border-radius: 12px;
+  margin: 4px;
 }
 
-.pharmacy-{
-    &name{
-        font-weight: bold;
-        display: inline;
-    }
-    &address{
-        opacity: 80%;
-    }
+.pharmacy- {
+  &name {
+    font-weight: bold;
+    display: inline;
+  }
+  &address {
+    opacity: 80%;
+  }
 }

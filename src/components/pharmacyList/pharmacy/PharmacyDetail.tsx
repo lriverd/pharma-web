@@ -5,9 +5,11 @@ import {
   faLocationDot,
   faPersonWalkingArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { Col, Row } from "antd";
+import { Card, Avatar } from "antd";
 
 import "./PharmacyDetail.scss";
+
+const { Meta } = Card;
 
 interface PharmacyProps {
   pharmacy: Pharmacy;
@@ -16,32 +18,27 @@ interface PharmacyProps {
 export const PharmacyDetail = ({ pharmacy }: PharmacyProps) => {
   const renderPharmacy: JSX.Element = (
     <div className="pharmacy-detail">
-      <Row>
-        <Col span={20}>
-          <div className="pharmacy-name">Farmacia {pharmacy.name}</div>
-        </Col>
-        <Col span={4}>
+      <Card
+        title={"Farmacia " + pharmacy.name}
+        extra={
           <div className="pharmacy-distance">
             <FontAwesomeIcon icon={faPersonWalkingArrowRight} />{" "}
             {pharmacy.distance_km_from_origin.toFixed(2)} Kms
           </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col span={20}>
-          <div className="pharmacy-address">{pharmacy.address.address}</div>
-        </Col>
-        <Col span={4}>
-          <div className="pharmacy-pin">
-            <FontAwesomeIcon icon={faLocationDot} />
-          </div>
-        </Col>
-      </Row>
-
-      <div className="pharmacy-phone">
-        {" "}
-        <FontAwesomeIcon icon={faPhone} /> {pharmacy.phone}
-      </div>
+        }
+        actions={[
+          <div className="pharmacy-phone">
+            <FontAwesomeIcon icon={faPhone} /> {pharmacy.phone}
+          </div>,
+          <FontAwesomeIcon icon={faLocationDot} />,
+        ]}
+        //loading={true}
+      >
+        <Meta
+          avatar={<Avatar>{pharmacy.name.charAt(0).toUpperCase()}</Avatar>}
+          description={pharmacy.address.address}
+        ></Meta>
+      </Card>
     </div>
   );
 
