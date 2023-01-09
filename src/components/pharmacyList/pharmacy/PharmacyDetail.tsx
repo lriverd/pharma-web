@@ -5,9 +5,10 @@ import {
   faLocationDot,
   faPersonWalkingArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
-import { Card, Avatar } from "antd";
+import { Card, Avatar, Modal } from "antd";
 
 import "./PharmacyDetail.scss";
+import MapContainer from "../../map/MapContainer";
 
 const { Meta } = Card;
 
@@ -16,6 +17,14 @@ interface PharmacyProps {
 }
 
 export const PharmacyDetail = ({ pharmacy }: PharmacyProps) => {
+  const renderModalI = () => {
+    Modal.info({
+      title: "Ubicación de Farmacia " + pharmacy.name,
+      content: <div>{<MapContainer pharmacy={pharmacy} />}</div>,
+      onOk() {},
+    });
+  };
+
   const renderPharmacy: JSX.Element = (
     <div className="pharmacy-detail">
       <Card
@@ -30,7 +39,7 @@ export const PharmacyDetail = ({ pharmacy }: PharmacyProps) => {
           <div className="pharmacy-phone">
             <FontAwesomeIcon icon={faPhone} /> {pharmacy.phone}
           </div>,
-          <FontAwesomeIcon icon={faLocationDot} />,
+          <FontAwesomeIcon icon={faLocationDot} onClick={renderModalI} />,
         ]}
         //loading={true}
       >
