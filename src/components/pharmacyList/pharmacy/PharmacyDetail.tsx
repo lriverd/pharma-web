@@ -13,14 +13,17 @@ import MapContainer from "../../map/MapContainer";
 const { Meta } = Card;
 
 interface PharmacyProps {
-  pharmacy: Pharmacy;
+  pharmacy?: Pharmacy;
+  isLoading: boolean;
 }
 
-export const PharmacyDetail = ({ pharmacy }: PharmacyProps) => {
+export const PharmacyDetail = ({ pharmacy, isLoading }: PharmacyProps) => {
   const renderModalI = () => {
     Modal.info({
-      title: "Ubicación de Farmacia " + pharmacy.name,
-      content: <div>{<MapContainer pharmacy={pharmacy} />}</div>,
+      title: "Ubicación de Farmacia " + pharmacy?.name,
+      content: (
+        <div>{pharmacy ? <MapContainer pharmacy={pharmacy} /> : ""}</div>
+      ),
       onOk() {},
     });
   };
@@ -28,28 +31,48 @@ export const PharmacyDetail = ({ pharmacy }: PharmacyProps) => {
   const renderPharmacy: JSX.Element = (
     <div className="pharmacy-detail">
       <Card
-        title={"Farmacia " + pharmacy.name}
+        title={"Farmacia " + pharmacy?.name}
         extra={
           <div className="pharmacy-distance">
-            <FontAwesomeIcon icon={faPersonWalkingArrowRight} />{" "}
-            {pharmacy.distance_km_from_origin.toFixed(2)} Kms
+            <FontAwesomeIcon icon={faPersonWalkingArrowRight} />
+            {" " + pharmacy?.distance_km_from_origin.toFixed(2)} Kms
           </div>
         }
         actions={[
           <div className="pharmacy-phone">
-            <FontAwesomeIcon icon={faPhone} /> {pharmacy.phone}
+            <FontAwesomeIcon icon={faPhone} /> + {" " + pharmacy?.phone}
           </div>,
           <FontAwesomeIcon icon={faLocationDot} onClick={renderModalI} />,
         ]}
-        //loading={true}
+        loading={isLoading}
       >
         <Meta
-          avatar={<Avatar>{pharmacy.name.charAt(0).toUpperCase()}</Avatar>}
-          description={pharmacy.address.address}
+          avatar={<Avatar>{pharmacy?.name.charAt(0).toUpperCase()}</Avatar>}
+          description={pharmacy?.address.address}
         ></Meta>
       </Card>
     </div>
   );
 
-  return <>{renderPharmacy}</>;
+  const renderLoadingCard: JSX.Element = (
+    <div className="pharmacy-detail">
+      <Card
+        title={"Buscando . . . "}
+        extra={
+          <div className="pharmacy-distance">
+            <FontAwesomeIcon icon={faPersonWalkingArrowRight} />0 Kms
+          </div>
+        }
+        actions={[
+          <div className="pharmacy-phone">
+            <FontAwesomeIcon icon={faPhone} />
+          </div>,
+          <FontAwesomeIcon icon={faLocationDot} />,
+        ]}
+        loading={isLoading}
+      ></Card>
+    </div>
+  );
+
+  return <>{isLoading ? renderLoadingCard : renderPharmacy}</>;
 };

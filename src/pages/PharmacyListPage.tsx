@@ -1,15 +1,14 @@
-import { Layout } from "antd";
+import { Layout, Space } from "antd";
+import FilterPanel from "../components/FilterPanel/FilterPanel";
 import { PharmacyFooter } from "../components/footer/PharmacyFooter";
 import PharmacyHeader from "../components/header/PharmacyHeader";
 import { PharmacyList } from "../components/pharmacyList/PharmacyList";
-import { useFetchPharmacy } from "../hooks/useFetch";
 
 import "./PharmacyListPage.scss";
 
 const { Header, Footer, Content } = Layout;
 
 export const PharmacyListPage = () => {
-  const pharmacy = useFetchPharmacy();
   return (
     <>
       <Layout className="layout">
@@ -17,7 +16,10 @@ export const PharmacyListPage = () => {
           <PharmacyHeader />
         </Header>
         <Content>
-          <PharmacyList pharmacyList={pharmacy.data} />
+          <Space direction="vertical" align="center">
+            <FilterPanel />
+            <PharmacyList />
+          </Space>
         </Content>
         <Footer>
           <PharmacyFooter />

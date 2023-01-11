@@ -1,15 +1,14 @@
-import './App.css';
-import { PharmacyListPage } from './pages/PharmacyListPage';
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
+import { PharmacyListPage } from "./pages/PharmacyListPage";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { fas } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter, faFontAwesome } from "@fortawesome/free-brands-svg-icons";
 
-library.add(fas, faTwitter, faFontAwesome)
+import "./App.css";
+
+library.add(fas, faTwitter, faFontAwesome);
 
 function App() {
-  return (
-    <PharmacyListPage />
-  );
+  return <PharmacyListPage />;
 }
 
 export default App;
