@@ -13,7 +13,7 @@ export const PharmacyList = () => {
   };
 
   return (
-    <Space className="space-align-containers" wrap>
+    <Space className="space-align-containers" wrap style={{ display: "flex" }}>
       {pharmacyList.loading ? (
         <PharmacyDetail isLoading={true} />
       ) : pharmacyList.pharmacyList?.length > 0 ? (

@@ -16,7 +16,7 @@ export const PharmacyListPage = () => {
           <PharmacyHeader />
         </Header>
         <Content>
-          <Space direction="vertical" align="center">
+          <Space direction="vertical" style={{ display: "flex" }}>
             <FilterPanel />
             <PharmacyList />
           </Space>

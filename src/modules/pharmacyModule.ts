@@ -2,7 +2,7 @@ import { RootState } from "./../store/store";
 import { Pharmacy } from "./../models/pharmacy.model";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getOpenPharmacy } from "../services/pharmacy.api";
-import { Coordinates } from "../models/coordinates.model";
+import { CoordinatesSearch } from "../models/coordinates.model";
 
 export interface PharmacyListState {
   pharmacyList: Pharmacy[];
@@ -16,8 +16,12 @@ const initialState: PharmacyListState = {
 
 export const findPharmacyByGeolocation = createAsyncThunk(
   "pharmacyModule/getOpenPharmacy",
-  async (coordinates: Coordinates) => {
-    return getOpenPharmacy(coordinates.latitude, coordinates.longitude, 15);
+  async (coordinates: CoordinatesSearch) => {
+    return getOpenPharmacy(
+      coordinates.latitude,
+      coordinates.longitude,
+      coordinates.radius
+    );
   }
 );
 

@@ -18,61 +18,51 @@ interface PharmacyProps {
 }
 
 export const PharmacyDetail = ({ pharmacy, isLoading }: PharmacyProps) => {
-  const renderModalI = () => {
+  const renderMapModal = () => {
     Modal.info({
       title: "Ubicación de Farmacia " + pharmacy?.name,
       content: (
-        <div>{pharmacy ? <MapContainer pharmacy={pharmacy} /> : ""}</div>
+        <div>
+          {pharmacy ? (
+            <MapContainer pharmacy={pharmacy} />
+          ) : (
+            "No se encontró farmacia"
+          )}
+        </div>
       ),
       onOk() {},
+      width: 500,
     });
   };
 
   const renderPharmacy: JSX.Element = (
     <div className="pharmacy-detail">
       <Card
-        title={"Farmacia " + pharmacy?.name}
+        title={
+          <>
+            <Avatar>{pharmacy?.name.charAt(0).toUpperCase()}</Avatar>
+            Farmacia {pharmacy?.name}
+          </>
+        }
         extra={
           <div className="pharmacy-distance">
             <FontAwesomeIcon icon={faPersonWalkingArrowRight} />
-            {" " + pharmacy?.distance_km_from_origin.toFixed(2)} Kms
+            {pharmacy?.distance_km_from_origin.toFixed(2)} Kms
           </div>
         }
         actions={[
           <div className="pharmacy-phone">
-            <FontAwesomeIcon icon={faPhone} /> + {" " + pharmacy?.phone}
+            <FontAwesomeIcon icon={faPhone} /> {pharmacy?.phone}
           </div>,
-          <FontAwesomeIcon icon={faLocationDot} onClick={renderModalI} />,
+          <FontAwesomeIcon icon={faLocationDot} onClick={renderMapModal} />,
         ]}
         loading={isLoading}
       >
-        <Meta
-          avatar={<Avatar>{pharmacy?.name.charAt(0).toUpperCase()}</Avatar>}
-          description={pharmacy?.address.address}
-        ></Meta>
+        <Meta description={pharmacy?.address.address}></Meta>
+        <Meta description={pharmacy?.address.locality}></Meta>
       </Card>
     </div>
   );
 
-  const renderLoadingCard: JSX.Element = (
-    <div className="pharmacy-detail">
-      <Card
-        title={"Buscando . . . "}
-        extra={
-          <div className="pharmacy-distance">
-            <FontAwesomeIcon icon={faPersonWalkingArrowRight} />0 Kms
-          </div>
-        }
-        actions={[
-          <div className="pharmacy-phone">
-            <FontAwesomeIcon icon={faPhone} />
-          </div>,
-          <FontAwesomeIcon icon={faLocationDot} />,
-        ]}
-        loading={isLoading}
-      ></Card>
-    </div>
-  );
-
-  return <>{isLoading ? renderLoadingCard : renderPharmacy}</>;
+  return <>{renderPharmacy}</>;
 };

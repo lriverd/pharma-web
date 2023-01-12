@@ -2,9 +2,7 @@ import { Pharmacy } from "../../models/pharmacy.model";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import React from "react";
 
-const googleApiKey = process.env.REACT_APP_GOOGLE_API_KEY
-  ? process.env.REACT_APP_GOOGLE_API_KEY
-  : "";
+const googleApiKey = "AIzaSyAbJ4KyUMJNQedbUrtJKRRxU57TATBw5Mo";
 
 const containerStyle = {
   width: "400px",
@@ -38,7 +36,6 @@ const MapContainer = (pharmacy: PharmacyProps) => {
       //onLoad={onLoad}
       onUnmount={onUnmount}
     >
-      {/* Child components, such as markers, info windows, etc. */}
       <Marker
         title={pharmacy.pharmacy.name}
         position={{
