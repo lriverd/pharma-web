@@ -2,7 +2,7 @@ import { PharmacyDetail } from "./pharmacy/PharmacyDetail";
 import { Space } from "antd";
 import { useAppSelector } from "../../store/hooks";
 
-import { selectPharmacyList } from "../../modules/pharmacyModule";
+import { selectPharmacyList } from "../../slices/pharmacyListSlice";
 
 export const PharmacyList = () => {
   const pharmacyList = useAppSelector(selectPharmacyList);

@@ -1,7 +1,7 @@
 import { Input, Button, Space, Tooltip, InputNumber, Tabs } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons";
-import { findPharmacyByGeolocation } from "../../modules/pharmacyModule";
+import { findPharmacyByGeolocation } from "../../slices/pharmacyListSlice";
 import { CoordinatesSearch } from "../../models/coordinates.model";
 import { useAppDispatch } from "../../store/hooks";
 

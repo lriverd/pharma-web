@@ -2,7 +2,9 @@ import { Pharmacy } from "../../models/pharmacy.model";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import React from "react";
 
-const googleApiKey = "AIzaSyAbJ4KyUMJNQedbUrtJKRRxU57TATBw5Mo";
+const googleApiKey = process.env.REACT_APP_GOOGLE_API_KEY
+  ? process.env.REACT_APP_GOOGLE_API_KEY
+  : "";
 
 const containerStyle = {
   width: "400px",

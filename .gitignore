@@ -19,6 +19,8 @@ sketch
 
 .env
 
+build
+
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json

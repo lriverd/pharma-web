@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import pharmacyListReducer from "../modules/pharmacyModule";
+import pharmacyListReducer from "../slices/pharmacyListSlice";
 // ...
 
 export const store = configureStore({
