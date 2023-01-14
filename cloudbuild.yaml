@@ -1,0 +1,13 @@
+steps:
+- name: node:10.15.1
+  entrypoint: npm
+  args: ["install"]
+- name: node:10.15.1
+  entrypoint: npm
+  args: ["run", "create-env"]
+  env:
+    - 'REACT_APP_MS_PHARMACY_URL=${_REACT_APP_MS_PHARMACY_URL}'
+    - 'REACT_APP_GOOGLE_API_KEY=${_REACT_APP_GOOGLE_API_KEY}
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
+timeout: "1600s"

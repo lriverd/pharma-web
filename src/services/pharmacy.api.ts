@@ -1,8 +1,7 @@
 import { Pharmacy } from "../models/pharmacy.model";
 import axios from "axios";
 
-const URL_API =
-  "http://localhost:8080/ms-pharmacys-turn/v1/turn/by-geolocation";
+const URL_API = process.env.REACT_APP_MS_PHARMACY_URL;
 
 export const getOpenPharmacy = async (
   lat: number,
