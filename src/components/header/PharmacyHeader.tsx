@@ -1,5 +1,7 @@
+import "./PharmacyHeader.scss";
+
 const PharmacyHeader = () => {
-  return <>Farmacias</>;
+  return <div className="menu-header">Farmacias de turno</div>;
 };
 
 export default PharmacyHeader;
