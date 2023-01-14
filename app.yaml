@@ -1,16 +1,10 @@
----
+runtime: nodejs14
+env: flex
+
 handlers:
-  - secure: always
-    static_dir: build/static
-    url: /static
-  - secure: always
+  - url: /(.*\.(gif|png|jpg|js|css|ico))$
     static_files: build/\1
-    upload: build/.*\.(json|ico|js)$
-    url: /(.*\.(json|ico|js))$
-  - secure: always
+    upload: build/(.*\.(gif|png|jpg|js|css|ico))$
+  - url: /.*
     static_files: build/index.html
     upload: build/index.html
-    url: .*
-manual_scaling:
-  instances: 1
-runtime: nodejs16
