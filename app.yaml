@@ -1,5 +1,9 @@
 runtime: nodejs16
 
+env_variables:
+  REACT_APP_MS_PHARMACY_URL: "https://ms-pharmacys-turn-6reerdxf6a-uc.a.run.app/ms-pharmacys-turn/v1/turn/by-geolocation"
+  REACT_APP_GOOGLE_API_KEY: ""
+
 handlers:
   - url: /(.*\.(gif|png|jpg|js|css|ico))$
     static_files: build/\1
