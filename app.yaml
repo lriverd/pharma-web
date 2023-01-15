@@ -1,5 +1,4 @@
-runtime: nodejs
-env: flex
+runtime: nodejs16
 
 handlers:
   - url: /(.*\.(gif|png|jpg|js|css|ico))$
