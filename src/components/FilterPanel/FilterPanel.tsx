@@ -1,7 +1,10 @@
 import { Input, Button, Space, Tooltip, InputNumber, Tabs } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons";
-import { findPharmacyByGeolocation } from "../../slices/pharmacyListSlice";
+import {
+  findPharmacyByGeolocation,
+  findPharmacyByLocality,
+} from "../../slices/pharmacyListSlice";
 import { CoordinatesSearch } from "../../models/coordinates.model";
 import { useAppDispatch } from "../../store/hooks";
 
@@ -13,13 +16,13 @@ const { Search } = Input;
 
 const DEFAULT_RADIUS_VALUE: number = 10;
 
-const onSearch = () => {
-  alert("Nones");
-};
-
 const FilterPanel = () => {
   const dispatch = useAppDispatch();
   const [radius, setRadius] = useState<number>(DEFAULT_RADIUS_VALUE);
+
+  const onSearch = (value: string) => {
+    dispatch(findPharmacyByLocality(value));
+  };
 
   const onChangeRadius = (value: number | null) => {
     const newValue: number = value ? value : DEFAULT_RADIUS_VALUE;
@@ -28,8 +31,6 @@ const FilterPanel = () => {
 
   const onLocation = () => {
     navigator.geolocation.getCurrentPosition(function (position) {
-      console.log("Latitude is :", position.coords.latitude);
-      console.log("Longitude is :", position.coords.longitude);
       const coordinates: CoordinatesSearch = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
@@ -78,8 +79,8 @@ const FilterPanel = () => {
   };
 
   return (
-    <Tabs defaultActiveKey="2" type="card">
-      <TabPane tab="Buscar por localidad" key="1" disabled={true}>
+    <Tabs defaultActiveKey="1" type="card">
+      <TabPane tab="Buscar por localidad" key="1">
         {renderSearchByLocality()}
       </TabPane>
       <TabPane tab="Buscar por ubicacion" key="2">

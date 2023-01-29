@@ -1,3 +1,4 @@
+import { getOpenPharmacyByWord } from "./../services/pharmacy.api";
 import { RootState } from "../store/store";
 import { Pharmacy } from "../models/pharmacy.model";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
@@ -25,6 +26,13 @@ export const findPharmacyByGeolocation = createAsyncThunk(
   }
 );
 
+export const findPharmacyByLocality = createAsyncThunk(
+  "pharmacyModule/getOpenPharmacyByLocality",
+  async (locality: string) => {
+    return getOpenPharmacyByWord(locality);
+  }
+);
+
 export const pharmacyModule = createSlice({
   name: "pharmacyList",
   initialState,
@@ -39,6 +47,16 @@ export const pharmacyModule = createSlice({
         state.pharmacyList = action.payload;
       })
       .addCase(findPharmacyByGeolocation.rejected, (state) => {
+        state.loading = false;
+      })
+      .addCase(findPharmacyByLocality.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(findPharmacyByLocality.fulfilled, (state, action) => {
+        state.loading = false;
+        state.pharmacyList = action.payload;
+      })
+      .addCase(findPharmacyByLocality.rejected, (state) => {
         state.loading = false;
       });
   },

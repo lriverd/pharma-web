@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import pharmacyListReducer from "../slices/pharmacyListSlice";
+import regionListReducer from "../slices/regionsSlice";
 // ...
 
 export const store = configureStore({
   reducer: {
     pharmacyList: pharmacyListReducer,
+    regionList: regionListReducer,
   },
 });
 
