@@ -36,21 +36,6 @@ export const PharmacyDetail = ({ pharmacy, isLoading }: PharmacyProps) => {
     });
   };
 
-  const buildActionDetails: any = () => {
-    return [
-      <div className="pharmacy-phone">
-        <FontAwesomeIcon icon={faPhone} /> {pharmacy?.phone}
-      </div>,
-      <FontAwesomeIcon icon={faLocationDot} onClick={renderMapModal} />,
-      pharmacy?.distance_km_from_origin && (
-        <div className="pharmacy-distance">
-          <FontAwesomeIcon icon={faPersonWalkingArrowRight} />
-          {pharmacy?.distance_km_from_origin.toFixed(2)} Kms
-        </div>
-      ),
-    ];
-  };
-
   const renderPharmacy: JSX.Element = (
     <div className="pharmacy-detail">
       <Card
