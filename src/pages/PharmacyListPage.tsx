@@ -1,5 +1,5 @@
 import { Layout, Space } from "antd";
-import FilterPanel from "../components/FilterPanel/FilterPanel";
+import FilterPanelContainer from "../container/FilterPanelContainer/FilterPanelContainer";
 import { PharmacyFooter } from "../components/footer/PharmacyFooter";
 import PharmacyHeader from "../components/header/PharmacyHeader";
 import { PharmacyList } from "../components/pharmacyList/PharmacyList";
@@ -17,7 +17,7 @@ export const PharmacyListPage = () => {
         </Header>
         <Content>
           <Space direction="vertical" style={{ display: "flex" }}>
-            <FilterPanel />
+            <FilterPanelContainer />
             <PharmacyList />
           </Space>
         </Content>

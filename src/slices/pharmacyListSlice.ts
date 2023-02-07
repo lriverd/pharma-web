@@ -18,6 +18,7 @@ const initialState: PharmacyListState = {
 export const findPharmacyByGeolocation = createAsyncThunk(
   "pharmacyModule/getOpenPharmacy",
   async (coordinates: CoordinatesSearch) => {
+    console.log("d1");
     return getOpenPharmacy(
       coordinates.latitude,
       coordinates.longitude,

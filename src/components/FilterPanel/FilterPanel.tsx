@@ -1,12 +1,7 @@
 import { Input, Button, Space, Tooltip, InputNumber, Tabs } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons";
-import {
-  findPharmacyByGeolocation,
-  findPharmacyByLocality,
-} from "../../slices/pharmacyListSlice";
 import { CoordinatesSearch } from "../../models/coordinates.model";
-import { useAppDispatch } from "../../store/hooks";
 
 import "./FilterPanel.scss";
 import TabPane from "antd/es/tabs/TabPane";
@@ -16,12 +11,17 @@ const { Search } = Input;
 
 const DEFAULT_RADIUS_VALUE: number = 10;
 
-const FilterPanel = () => {
-  const dispatch = useAppDispatch();
+export interface FilterProps {
+  loading: boolean;
+  findPharmacyByLocality: (value: string) => void;
+  findPharmacyByGeolocation: (coordinates: CoordinatesSearch) => void;
+}
+
+const FilterPanel = (props: FilterProps) => {
   const [radius, setRadius] = useState<number>(DEFAULT_RADIUS_VALUE);
 
   const onSearch = (value: string) => {
-    dispatch(findPharmacyByLocality(value));
+    props.findPharmacyByLocality(value);
   };
 
   const onChangeRadius = (value: number | null) => {
@@ -30,13 +30,15 @@ const FilterPanel = () => {
   };
 
   const onLocation = () => {
+    console.log("wut");
     navigator.geolocation.getCurrentPosition(function (position) {
       const coordinates: CoordinatesSearch = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
         radius: radius,
       };
-      dispatch(findPharmacyByGeolocation(coordinates));
+      console.log("wut2" + JSON.stringify(coordinates));
+      props.findPharmacyByGeolocation(coordinates);
     });
   };
 
@@ -53,7 +55,11 @@ const FilterPanel = () => {
           />{" "}
           Kms
           <Tooltip title="Buscar por distancia">
-            <Button type="primary" onClick={onLocation}>
+            <Button
+              type="primary"
+              onClick={onLocation}
+              disabled={props.loading}
+            >
               <FontAwesomeIcon icon={faLocationCrosshairs} />
             </Button>
           </Tooltip>
@@ -72,6 +78,7 @@ const FilterPanel = () => {
             enterButton="Buscar"
             style={{ width: 320 }}
             onSearch={onSearch}
+            disabled={props.loading}
           />
         </Space>
       </div>
