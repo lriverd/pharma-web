@@ -30,6 +30,7 @@ export const findPharmacyByGeolocation = createAsyncThunk(
 export const findPharmacyByLocality = createAsyncThunk(
   "pharmacyModule/getOpenPharmacyByLocality",
   async (locality: string) => {
+    console.log("d2");
     return getOpenPharmacyByWord(locality);
   }
 );

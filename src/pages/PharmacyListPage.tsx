@@ -2,7 +2,7 @@ import { Layout, Space } from "antd";
 import FilterPanelContainer from "../container/FilterPanelContainer/FilterPanelContainer";
 import { PharmacyFooter } from "../components/footer/PharmacyFooter";
 import PharmacyHeader from "../components/header/PharmacyHeader";
-import { PharmacyList } from "../components/pharmacyList/PharmacyList";
+import { PharmacyListContainer } from "../container/PharmacyListContainer/PharmacyListContainer";
 
 import "./PharmacyListPage.scss";
 
@@ -18,7 +18,7 @@ export const PharmacyListPage = () => {
         <Content>
           <Space direction="vertical" style={{ display: "flex" }}>
             <FilterPanelContainer />
-            <PharmacyList />
+            <PharmacyListContainer />
           </Space>
         </Content>
         <Footer>

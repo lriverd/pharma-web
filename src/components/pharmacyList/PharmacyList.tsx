@@ -1,22 +1,24 @@
 import { PharmacyDetail } from "./pharmacy/PharmacyDetail";
 import { Space } from "antd";
-import { useAppSelector } from "../../store/hooks";
+import { Pharmacy } from "../../models/pharmacy.model";
 
-import { selectPharmacyList } from "../../slices/pharmacyListSlice";
+interface PharmacyListProps {
+  loading: boolean;
+  pharmacyList: Pharmacy[];
+}
 
-export const PharmacyList = () => {
-  const pharmacyList = useAppSelector(selectPharmacyList);
+export const PharmacyList = (props: PharmacyListProps) => {
   const renderPharmacyList = () => {
-    return pharmacyList.pharmacyList.map((phar) => (
-      <PharmacyDetail pharmacy={phar} isLoading={false} />
+    return props.pharmacyList.map((phar) => (
+      <PharmacyDetail key={phar.id} pharmacy={phar} isLoading={false} />
     ));
   };
 
   return (
     <Space className="space-align-containers" wrap style={{ display: "flex" }}>
-      {pharmacyList.loading ? (
+      {props.loading ? (
         <PharmacyDetail isLoading={true} />
-      ) : pharmacyList.pharmacyList?.length > 0 ? (
+      ) : props.pharmacyList?.length > 0 ? (
         renderPharmacyList()
       ) : (
         "Seleccione un filtro de busqueda"

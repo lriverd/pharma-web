@@ -25,5 +25,6 @@ export const getOpenPharmacyByWord = async (
   const { data } = await axios.get<Pharmacy[]>(
     `${URL_API}/turn/by-locality?pattern=${locality}`
   );
+  console.log("a1223");
   return data;
 };

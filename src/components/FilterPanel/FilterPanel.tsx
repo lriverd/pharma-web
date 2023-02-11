@@ -30,14 +30,12 @@ const FilterPanel = (props: FilterProps) => {
   };
 
   const onLocation = () => {
-    console.log("wut");
     navigator.geolocation.getCurrentPosition(function (position) {
       const coordinates: CoordinatesSearch = {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude,
         radius: radius,
       };
-      console.log("wut2" + JSON.stringify(coordinates));
       props.findPharmacyByGeolocation(coordinates);
     });
   };
