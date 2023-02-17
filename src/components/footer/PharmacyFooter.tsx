@@ -1,8 +1,12 @@
+import packageJson from "../../../package.json";
+
+import styles from "./PharmacyFooter.module.scss";
+
 export const PharmacyFooter = () => {
   return (
-    <div>
+    <div className={styles.textFooter}>
       Pharmacy Web ©2022 Created by lriverd <br />
-      {process.env.REACT_APP_MS_PHARMACY_URL}
+      version {packageJson.version}
     </div>
   );
 };

@@ -4,7 +4,6 @@ import { faLocationCrosshairs } from "@fortawesome/free-solid-svg-icons";
 import { CoordinatesSearch } from "../../models/coordinates.model";
 
 import "./FilterPanel.scss";
-import TabPane from "antd/es/tabs/TabPane";
 import { useState } from "react";
 
 const { Search } = Input;
@@ -84,14 +83,22 @@ const FilterPanel = (props: FilterProps) => {
   };
 
   return (
-    <Tabs defaultActiveKey="1" type="card">
-      <TabPane tab="Buscar por localidad" key="1">
-        {renderSearchByLocality()}
-      </TabPane>
-      <TabPane tab="Buscar por ubicacion" key="2">
-        {renderSearchByGeoLocation()}
-      </TabPane>
-    </Tabs>
+    <Tabs
+      defaultActiveKey="1"
+      type="card"
+      items={[
+        {
+          label: "Buscar por localidad",
+          key: "1",
+          children: renderSearchByLocality(),
+        },
+        {
+          label: "Buscar por ubicación",
+          key: "2",
+          children: renderSearchByGeoLocation(),
+        },
+      ]}
+    />
   );
 };
 

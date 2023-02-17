@@ -7,7 +7,7 @@ const googleApiKey = process.env.REACT_APP_GOOGLE_API_KEY
   : "";
 
 const containerStyle = {
-  width: "400px",
+  width: "90%",
   height: "400px",
 };
 
