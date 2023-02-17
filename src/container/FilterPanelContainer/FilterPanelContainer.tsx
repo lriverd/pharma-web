@@ -27,7 +27,7 @@ const mapDispatchToProps = (dispatch: AppDispatch): DispatchFromProps => {
     findPharmacyByLocality: (value: string) =>
       dispatch(findPharmacyByLocality(value)),
     findPharmacyByGeolocation: (coordinates: CoordinatesSearch) =>
-      findPharmacyByGeolocation(coordinates),
+      dispatch(findPharmacyByGeolocation(coordinates)),
   };
 };
 

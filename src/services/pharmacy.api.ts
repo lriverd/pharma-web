@@ -10,11 +10,9 @@ export const getOpenPharmacy = async (
   long: number,
   radius: number
 ): Promise<Pharmacy[]> => {
-  console.log("a1");
   const { data } = await axios.get<Pharmacy[]>(
     `${URL_API}/turn/by-geolocation?lat=${lat}&lng=${long}&radiusKm=${radius}`
   );
-  console.log("a12");
 
   return data;
 };
@@ -25,6 +23,5 @@ export const getOpenPharmacyByWord = async (
   const { data } = await axios.get<Pharmacy[]>(
     `${URL_API}/turn/by-locality?pattern=${locality}`
   );
-  console.log("a1223");
   return data;
 };
